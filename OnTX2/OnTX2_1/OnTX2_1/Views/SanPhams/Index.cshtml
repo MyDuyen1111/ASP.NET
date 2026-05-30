@@ -1,0 +1,68 @@
+﻿@model IEnumerable<OnTX2_1.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+            {
+                <div class="input-group">
+                    <input type="text" placeholder="Nhập đơn giá" class="form-control" name="searchString" value="@Request["searchString"]" />
+                    <input type="submit" class="btn btn-primary" value="Tìm kiếm" />
+                </div>
+                @Html.ValidationMessage("searchString", new {@class = "text-danger"})
+            }
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HangSanXuat.TenHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HangSanXuat.TenHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        <td>
+            @{
+                var path = "~/images/" + item.HinhAnh;
+            }
+            <img src="@Url.Content(path)" class="img-thumbnail" width="200" alt="Alternate Text"/>
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MaSP }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MaSP }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MaSP })
+        </td>
+    </tr>
+}
+
+</table>

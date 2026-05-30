@@ -1,0 +1,26 @@
+﻿@model OnTX2_1.Models.HangSanXuat
+
+@{
+    ViewBag.Title = "Xem";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div>
+    <h4>HangSanXuat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenHang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaHang }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>
